@@ -1,0 +1,22 @@
+import wollok.game.*
+import auto.*
+
+program miPrimerWollokGame {
+	// límites del tablero de juego
+	game.width(14)
+	game.height(8)
+
+	game.boardGround("empedrado.jpg")// fondo del tablero de juego
+	game.addVisual(auto)
+	game.addVisual(edificio)
+	
+	game.whenCollideDo(auto,{anunciarLlegada=> auto.anunciarLlegaada()})
+	//Movimientos
+	keyboard.up().onPressDo{auto.moverArriba()}
+	keyboard.down().onPressDo{auto.moverAbajo()}
+	keyboard.left().onPressDo{auto.moverIzquierda()}
+	keyboard.right().onPressDo{auto.moverDerecha()}
+	
+	// siempre al final, es para que arranque el juego, si queda algo debajo no se ejecuta
+	game.start()
+}
